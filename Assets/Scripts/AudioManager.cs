@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameOverMusic;
     public AudioClip gameMusicLVL1;
     public AudioClip gameMusicLVL2;
+    public AudioClip gameMusicLVL3;
     public AudioClip coinSFX;
     public AudioClip jumpSFX;
     public AudioClip finalSFX;
@@ -23,6 +25,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyKillSFX;
     public AudioClip jumpPadSFX;
     public AudioClip lifeLostSFX;
+    public AudioClip buttonClickSFX;
 
     private void Awake()
     {
@@ -45,7 +48,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Main-Menu-Example" || scene.name == "Options-Example")
+        if (scene.name == "Main-Menu" || scene.name == "Options")
         {
             PlayMainMenuMusic();
         }
@@ -53,7 +56,7 @@ public class AudioManager : MonoBehaviour
         {
             PlayLoadingMusic();
         }
-        else if (scene.name == "GameOver-Example")
+        else if (scene.name == "GameOver")
         {
             PlayGameOverMusic();
         }
@@ -81,11 +84,14 @@ public class AudioManager : MonoBehaviour
     {
         switch (levelName)
         {
-            case "LVL 1":
+            case "Level1":
                 PlayMusic(gameMusicLVL1);
                 break;
-            case "LVL 2":
+            case "Level2":
                 PlayMusic(gameMusicLVL2);
+                break;
+            case "Level3":
+                PlayMusic(gameMusicLVL3);
                 break;
 
             default:
@@ -96,20 +102,35 @@ public class AudioManager : MonoBehaviour
 
     private void PlayMusic(AudioClip clip)
     {
-        if (musicSource.clip == clip)
+        if (clip == null)
+        {
             return;
+        }
+
+
+        if (musicSource.clip == clip)
+        {
+            return;
+        }
 
         musicSource.Stop();
+        musicSource.clip = null;
         musicSource.clip = clip;
+
         musicSource.Play();
     }
 
-    public void PlaySFX(AudioClip clip)
+        public void PlaySFX(AudioClip clip)
     {
         if (clip != null)
         {
             sfxSource.PlayOneShot(clip);
         }
+    }
+
+    public void PlayButtonClickSFX()
+    {
+        PlaySFX(buttonClickSFX);
     }
 
     public void PlayCoinSFX()

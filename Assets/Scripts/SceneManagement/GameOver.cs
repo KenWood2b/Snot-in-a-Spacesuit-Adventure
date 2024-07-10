@@ -5,12 +5,12 @@ public class GameOver : MonoBehaviour
 {
     public void RestartGame()
     {
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene(GameMaster.SceneLoading);
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main-Menu-Example");
+        SceneManager.LoadScene(GameMaster.SceneMainMenu);
     }
     public void ExitGame()
     {

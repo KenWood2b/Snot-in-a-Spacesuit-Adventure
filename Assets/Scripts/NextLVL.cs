@@ -9,13 +9,9 @@ public class NextLVL : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            LoadNextLevel();
-           
-        }
-    }
+            PlayerPrefs.SetString("NextSceneName", nextLevelName);
+            SceneManager.LoadScene("LoadingScene");
 
-    void LoadNextLevel()
-    {
-        SceneManager.LoadScene(nextLevelName);
+        }
     }
 }

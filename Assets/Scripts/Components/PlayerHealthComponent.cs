@@ -5,7 +5,7 @@ public class PlayerHealthComponent : HealthComponent
     public Transform initialRespawnPoint;
     public Transform respawnPoint;
 
-    private void Start()
+    protected override void Start()
     {
         respawnPoint = initialRespawnPoint;
     }
@@ -21,7 +21,8 @@ public class PlayerHealthComponent : HealthComponent
             GameController.instance.LoseLife();
         }
 
-        if (GameController.instance.GetLives() > 0)
+        //if (GameController.instance.GetLives() > 0)
+        if (GameMaster.instance.Lives > 0)
         {
             Respawn();
             AudioManager.instance.PlayLifeLostSFX();

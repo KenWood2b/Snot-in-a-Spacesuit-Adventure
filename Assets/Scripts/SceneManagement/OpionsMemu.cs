@@ -42,7 +42,7 @@ public class OptionsMenu : MonoBehaviour
         {
             AudioManager.instance.SaveSettings();
         }
-        SceneManager.LoadScene("Main-Menu-Example");
+        SceneManager.LoadScene("Main-Menu");
     }
 }
 

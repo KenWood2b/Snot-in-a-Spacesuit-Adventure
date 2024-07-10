@@ -9,12 +9,12 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetString("NextSceneName", "Level1");
 
         
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene(GameMaster.SceneLoading);
     }
 
     public void OpenOptions()
     {
-        SceneManager.LoadScene("Options-Example");
+        SceneManager.LoadScene(GameMaster.SceneOptions);
     }
 
     public void ExitGame()
@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu-Example");
+        SceneManager.LoadScene(GameMaster.SceneMainMenu);
     }
 }
 
