@@ -1,9 +1,5 @@
-using System.Collections;
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class GameController : MonoBehaviour
 {
@@ -13,8 +9,6 @@ public class GameController : MonoBehaviour
     public Image[] livesImage;
     public Sprite[] lifeSprites;
 
-   /* private int score;
-    private int lives = 3;*/
 
     void Awake()
     {
@@ -30,43 +24,30 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        //score = 0;
         UpdateScoreText();
         UpdateLivesImage();
     }
 
     public void AddScore(int value)
     {
-        //score += value;
         GameMaster.instance.AddScore(value);
         UpdateScoreText();
-        //SaveGameData();
     }
 
     public void LoseLife()
     {
-        //lives--;
         GameMaster.instance.LoseLife();
         UpdateLivesImage();
-
-        /*if (lives <= 0)
-        {
-            GameOver();
-        }
-        else
-        {
-            SaveGameData();
-        }*/
     }
 
     void UpdateScoreText()
     {
         if (scoreText != null)
         {
-            //scoreText.text = "Score: " + score.ToString();
             scoreText.text = "Score: " + GameMaster.instance.Score.ToString();
         }
     }
+
 
     void UpdateLivesImage()
     {
@@ -88,35 +69,4 @@ public class GameController : MonoBehaviour
 
         }
     }
-
-    /*public int GetLives()
-    {
-        return lives;
-    }*/
-
-    /*public void GameOver()
-    {
-        AudioManager.instance.PlayGameOverMusic();
-        SceneManager.LoadScene("GameOver");
-    }*/
-
-    /*public void SaveGameData()
-    {
-        PlayerPrefs.SetInt("Score", score);
-        PlayerPrefs.SetInt("Lives", lives);
-        PlayerPrefs.Save();
-    }
-
-    public void LoadGameData()
-    {
-        if (PlayerPrefs.HasKey("Score"))
-        {
-            score = PlayerPrefs.GetInt("Score");
-        }
-        if (PlayerPrefs.HasKey("Lives"))
-        {
-            lives = PlayerPrefs.GetInt("Lives");
-        }
-    }*/
-
 }

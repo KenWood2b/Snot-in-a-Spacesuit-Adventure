@@ -8,6 +8,10 @@ TagManager:
   - Wall
   - Platform
   - Enemy
+  - Coin
+  - Diamond
+  - MovingPlatform
+  - PlayerPosition
   layers:
   - Default
   - TransparentFX

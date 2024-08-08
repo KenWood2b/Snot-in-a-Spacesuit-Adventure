@@ -17,6 +17,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(GameMaster.SceneOptions);
     }
 
+    public void OpenInfo()
+    {
+        SceneManager.LoadScene(GameMaster.SceneInfo);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

@@ -26,6 +26,7 @@ public class HealthComponent : MonoBehaviour
 
     public int GetCurrentHealth()
     {
+        Debug.Log("Текущее здоровье игрока: " + currentHealth);
         return currentHealth;
     }
 }

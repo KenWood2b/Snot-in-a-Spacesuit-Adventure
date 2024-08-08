@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4080852878387782437}
   - component: {fileID: 4080852878387782618}
   - component: {fileID: 8611387539782772235}
+  - component: {fileID: 8029526321712968709}
   m_Layer: 5
   m_Name: HorizontalBlackButton
   m_TagString: Untagged
@@ -124,7 +125,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: OpenOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -146,6 +147,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333a65fbbf9893a43b5b4785494ac64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8029526321712968709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4080852878387782617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: ButtonHoverManager, Assembly-CSharp
+          m_MethodName: MoveCharacterToButton
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 4080852878387782616}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5341807863262618669
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,4 +254,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play
+  m_Text: Options

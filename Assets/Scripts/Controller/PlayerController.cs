@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
     private JumpComponent jumpComponent;
     private AttackComponent attackComponent;
     private PlayerHealthComponent healthComponent;
+    private Rigidbody2D rb;
+    /*private FixedJoint2D fixedJoint;
+    private bool isOnPlatform;*/
 
     public bool HasKey { get; internal set; }
 
@@ -15,6 +18,9 @@ public class PlayerController : MonoBehaviour
         jumpComponent = GetComponent<JumpComponent>();
         attackComponent = GetComponent<AttackComponent>();
         healthComponent = GetComponent<PlayerHealthComponent>();
+        rb = GetComponent<Rigidbody2D>();
+       /* fixedJoint = gameObject.AddComponent<FixedJoint2D>();
+        fixedJoint.enabled = false;*/
 
         if (moveComponent == null)
         {
@@ -53,28 +59,31 @@ public class PlayerController : MonoBehaviour
         if (jumpComponent != null && Input.GetKeyDown(KeyCode.Space))
         {
             jumpComponent.Jump();
+            /*fixedJoint.enabled = false;
+            isOnPlatform = false;*/
         }
 
-        if (attackComponent != null && Input.GetKeyDown(KeyCode.F))
-        {
-            GameObject target = FindTarget();
-            if (target != null)
-            {
-                attackComponent.Attack(target);
-            }
-        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject != null && collision.gameObject.CompareTag("Enemy"))
+        /*if (collision.gameObject.CompareTag("MovingPlatform"))
         {
-            if (IsFalling() && collision.contacts[0].normal.y > 0.5f)
+            fixedJoint.connectedBody = collision.rigidbody;
+            fixedJoint.enabled = true;
+            isOnPlatform = true;
+        }*/
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            bool isFalling = IsFalling();
+
+            if (isFalling && collision.contacts[0].normal.y > 0.5f)
             {
                 var enemyController = collision.gameObject.GetComponent<EnemyController>();
                 if (enemyController != null)
                 {
-                    enemyController.TakeDamage(healthComponent.GetCurrentHealth());
+                    int damageToDeal = 1;
+                    enemyController.TakeDamage(damageToDeal);
                 }
             }
             else
@@ -86,6 +95,15 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    /*void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            fixedJoint.enabled = false;
+            isOnPlatform = false;
+        }
+    }*/
 
     private bool IsFalling()
     {

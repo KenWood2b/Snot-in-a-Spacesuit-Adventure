@@ -4,7 +4,6 @@ public class JumpComponent : MonoBehaviour
 {
     public float jumpForce = 10f;
     private Rigidbody2D rb;
-    //private bool isGrounded;
     private int jumpCount = 0;
     public int maxJumpCount = 2;
     private GroundColliderComponent _groundColliderComponent;
@@ -17,11 +16,12 @@ public class JumpComponent : MonoBehaviour
 
     void Update()
     {
-        
+
         if (_groundColliderComponent.IsGrounded)
         {
             jumpCount = 0;
         }
+
     }
 
     public void Jump()
@@ -33,22 +33,9 @@ public class JumpComponent : MonoBehaviour
             AudioManager.instance.PlayJumpSFX();
         }
     }
-
-    /*void OnCollisionEnter2D(Collision2D collision)
+    public void ResetJumpState()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Debug.Log($"JumpComponent:OnCollisionEnter2D");
-            isGrounded = true;
-        }
+        jumpCount = 0;
     }
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Debug.Log($"JumpComponent:OnCollisionExit2D");
-            isGrounded = false;
-        }
-    }*/
 }

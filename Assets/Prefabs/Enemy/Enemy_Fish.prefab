@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  movementSmoothing: 0.05
 --- !u!114 &6176747844017330129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+  enemyValue: 50
 --- !u!114 &4811204062668358260
 MonoBehaviour:
   m_ObjectHideFlags: 0
